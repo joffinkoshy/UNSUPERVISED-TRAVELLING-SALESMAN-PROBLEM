@@ -5,17 +5,17 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.optim import lr_scheduler
 
-from model import UTSPGNN
-from dataset import generate_tsp_instance
+from utsp_project.model import UTSPGNN
+from utsp_project.dataset import generate_tsp_instance
 
 try:
-    from loss import calculate_utsp_loss as baseline_calculate_utsp_loss
+    from utsp_project.loss import calculate_utsp_loss as baseline_calculate_utsp_loss
     BASELINE_LOSS_AVAILABLE = True
 except ImportError:
     BASELINE_LOSS_AVAILABLE = False
-    print("Warning: Could not import 'calculate_utsp_loss' from loss.py. 'baseline' loss type will not be available.")
+    print("Warning: Could not import 'calculate_utsp_loss' from utsp_project.loss. 'baseline' loss type will not be available.")
     def baseline_calculate_utsp_loss(*args, **kwargs):
-        raise NotImplementedError("Baseline loss function from loss.py is not available. Please ensure loss.py exists and is importable.")
+        raise NotImplementedError("Baseline loss function from utsp_project.loss is not available. Please ensure the package is properly installed.")
 
 def calculate_unsupervised_tsp_loss(heatmap_output: torch.Tensor, coords: torch.Tensor,
                                     lambda_length: float, lambda_degree: float, lambda_subtour: float) -> torch.Tensor:

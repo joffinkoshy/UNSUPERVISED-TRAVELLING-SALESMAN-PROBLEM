@@ -4,10 +4,10 @@ import numpy as np
 import argparse
 import time  # <--- MOVED IMPORT TIME HERE
 
-from model import UTSPGNN  # Your GNN model
-from dataset import generate_tsp_instance  # For generating test coordinates
+from utsp_project.model import UTSPGNN  # Your GNN model
+from utsp_project.dataset import generate_tsp_instance  # For generating test coordinates
 # Ensure tsp_env.py and its functions are available
-from tsp_env import generate_tour_from_heatmap_and_coords
+from utsp_project.tsp_env import generate_tour_from_heatmap_and_coords
 
 
 def evaluate_model():

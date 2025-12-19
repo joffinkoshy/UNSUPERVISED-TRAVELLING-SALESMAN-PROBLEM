@@ -16,22 +16,29 @@ The model is trained to predict a heatmap of edge probabilities, from which a fi
 
 .  
 ├── utsp\_project/  
+│   ├── \_\_init\_\_.py  
 │   ├── dataset.py  
 │   ├── loss.py  
 │   ├── model.py  
-│   ├── train.py  
-│   ├── loadmodel.py  
-│   ├── tsp\_env.py  
-│   └── ... (saved models, result sheets, etc.)  
+│   └── tsp\_env.py  
+├── train.py  
+├── loadmodel.py  
+├── Create\_Charts.py  
+├── experiments/  
+├── Results/  
 ├── README.md  
 └── requirements.txt
 
-* model.py: Contains the GAT-based GNN model architecture.  
-* loss.py: Implements the baseline UTSP surrogate loss function.  
+* utsp\_project/: Core Python package containing the UTSP implementation  
+  - model.py: Contains the GAT-based GNN model architecture.  
+  - loss.py: Implements the baseline UTSP surrogate loss function.  
+  - dataset.py: Utility for generating random Euclidean TSP instances.  
+  - tsp\_env.py: Contains the logic for tour construction (greedy search) and 2-Opt local search refinement, optimized with Numba.  
 * train.py: The main script for training models. Supports both the baseline and the alternative loss function.  
 * loadmodel.py: The script for evaluating trained models on new TSP instances.  
-* dataset.py: Utility for generating random Euclidean TSP instances.  
-* tsp\_env.py: Contains the logic for tour construction (greedy search) and 2-Opt local search refinement, optimized with Numba.  
+* Create\_Charts.py: Script for generating result visualizations.  
+* experiments/: Contains baseline comparison implementations.  
+* Results/: Stores trained models, result charts, and analysis documents.  
 * requirements.txt: Lists the required Python libraries.
 
 ## **Setup**
